@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_tenants",
     "graphene_django",
     "corsheaders",
     "reversion",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django_tenants.middleware.main.TenantMainMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -90,7 +92,7 @@ WSGI_APPLICATION = "src.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django_tenants.postgresql_backend",
         "NAME": env("DATABASE"),
         "USER": env("DATABASE_PORT"),
         "PASSWORD": env("DATABASE_PASSWORD"),
@@ -98,6 +100,10 @@ DATABASES = {
         "PORT": env("DATABASE_PORT"),
     }
 }
+
+DATABASE_ROUTERS = [
+    "django_tenants.routers.TenantSyncRouter",
+]
 
 
 #* Password validation

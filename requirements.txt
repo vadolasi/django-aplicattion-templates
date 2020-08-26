@@ -8,6 +8,7 @@ django-debug-toolbar==2.2
 django-environ==0.4.5
 django-model-utils==4.0.0
 django-reversion==3.0.7
+django-tenants==3.2.1
 graphene==2.1.8
 graphene-django==2.13.0
 graphql-core==2.3.2
