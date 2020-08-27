@@ -14,19 +14,19 @@ from pathlib import Path
 import environ
 
 
-#* Build paths inside the project like this: BASE_DIR / "subdir".
+# * Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 
-#* Django environ
-#? https://django-environ.readthedocs.io/en/latest/
+# * Django environ
+# ? https://django-environ.readthedocs.io/en/latest/
 
 env = environ.Env()
 environ.Env.read_env()
 
 
-#* Quick-start development settings - unsuitable for production
-#? See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+# * Quick-start development settings - unsuitable for production
+# ? See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 #! SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
@@ -40,7 +40,7 @@ SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ["https://adpaz.pythonanywhere.com"]
 
 
-#* Application definition
+# * Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -86,8 +86,8 @@ TEMPLATES = [
 WSGI_APPLICATION = "src.wsgi.application"
 
 
-#* Database
-#? https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# * Database
+# ? https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     "default": {
@@ -101,8 +101,8 @@ DATABASES = {
 }
 
 
-#* Password validation
-#? https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+# * Password validation
+# ? https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -120,8 +120,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-#* Password hashes
-#? https://docs.djangoproject.com/en/3.1/topics/auth/passwords/#using-argon2-with-django
+# * Password hashes
+# ? https://docs.djangoproject.com/en/3.1/topics/auth/passwords/#using-argon2-with-django
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
@@ -131,8 +131,8 @@ PASSWORD_HASHERS = [
 ]
 
 
-#* Internationalization
-#? https://docs.djangoproject.com/en/3.1/topics/i18n/
+# * Internationalization
+# ? https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = "pt-br"
 
@@ -145,8 +145,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-#* Static files (CSS, JavaScript, Images)
-#? https://docs.djangoproject.com/en/3.1/howto/static-files/
+# * Static files (CSS, JavaScript, Images)
+# ? https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
 STATIC_ROOT = "static"

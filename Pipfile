@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+django-debug-toolbar = "*"
+
+[packages]
+django = {extras = ["argon2"], version = "*"}
+graphene-django = "*"
+django-cors-headers = "*"
+django-environ = "*"
+django-model-utils = "*"
+django-reversion = "*"
+psycopg2 = "*"
+black = "==20.8b1"
+
+[requires]
+python_version = "3.8"
