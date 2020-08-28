@@ -39,20 +39,29 @@ ALLOWED_HOSTS = []
 
 # * Application definition
 
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
+SHARED_APPS = [
+    "django_tenants",
+    "apps.customers",
     "django.contrib.contenttypes",
+    "django.contrib.auth",
     "django.contrib.sessions",
+    "django.contrib.sites",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
+    "django.contrib.admin",
     "graphene_django",
     "corsheaders",
     "reversion",
     "debug_toolbar",
 ]
 
+TENANT_APPS = [
+    "django.contrib.contenttypes",
+]
+
+INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
+
 MIDDLEWARE = [
+    "django_tenants.middleware.main.TenantMainMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -90,14 +99,18 @@ WSGI_APPLICATION = "src.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env("DATABASE"),
+        "ENGINE": "django_tenants.postgresql_backend",
+        "NAME": env("DATABASE_NAME"),
         "USER": env("DATABASE_PORT"),
         "PASSWORD": env("DATABASE_PASSWORD"),
         "HOST": env("DATABASE_HOST"),
         "PORT": env("DATABASE_PORT"),
     }
 }
+
+DATABASE_ROUTERS = [
+    "django_tenants.routers.TenantSyncRouter",
+]
 
 
 # * Password validation
@@ -150,3 +163,9 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+# * Tetants settings
+
+TENANT_MODEL = "customers.Client"
+TENANT_DOMAIN_MODEL = "customers.Domain"
