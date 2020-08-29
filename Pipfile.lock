@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5b4e0fb1f63b479445a4d91fb01a96203b4aa09caf525e90f65ef79adb7614f9"
+            "sha256": "e91955d31e509d12f3be262e9098cbf721f3fd4fba75fff657e28019860ab330"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -135,6 +135,14 @@
             "index": "pypi",
             "version": "==0.4.5"
         },
+        "django-guardian": {
+            "hashes": [
+                "sha256:0e70706c6cda88ddaf8849bddb525b8df49de05ba0798d4b3506049f0d95cbc8",
+                "sha256:ed2de26e4defb800919c5749fb1bbe370d72829fbd72895b6cf4f7f1a7607e1b"
+            ],
+            "index": "pypi",
+            "version": "==2.3.0"
+        },
         "django-model-utils": {
             "hashes": [
                 "sha256:9cf882e5b604421b62dbe57ad2b18464dc9c8f963fc3f9831badccae66c1139c",
@@ -150,6 +158,13 @@
             ],
             "index": "pypi",
             "version": "==3.0.7"
+        },
+        "django-tenant-users": {
+            "hashes": [
+                "sha256:4e38e9474bcc942c4f4b3b48779a72dc09a182b078a3fcce44802d467987d53a"
+            ],
+            "index": "pypi",
+            "version": "==0.3.12"
         },
         "django-tenants": {
             "hashes": [

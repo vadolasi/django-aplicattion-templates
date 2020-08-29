@@ -16,6 +16,8 @@ django-reversion = "*"
 black = "==20.8b1"
 django-tenants = "*"
 psycopg2 = "*"
+django-tenant-users = "*"
+django-guardian = "*"
 
 [requires]
 python_version = "3.8"

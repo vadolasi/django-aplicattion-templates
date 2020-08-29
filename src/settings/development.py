@@ -40,22 +40,28 @@ ALLOWED_HOSTS = []
 # * Application definition
 
 SHARED_APPS = [
-    "django_tenants",
-    "apps.customers",
     "django.contrib.contenttypes",
     "django.contrib.auth",
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.admin",
+    "django_tenants",
+    "apps.customers",
+    "tenant_users.permissions",
+    "tenant_users.tenants",
+    "apps.users",
     "graphene_django",
     "corsheaders",
     "reversion",
     "debug_toolbar",
+    "guardian",
 ]
 
 TENANT_APPS = [
+    "django.contrib.auth",
     "django.contrib.contenttypes",
+    "tenant_users.permissions",
 ]
 
 INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -108,9 +114,7 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = [
-    "django_tenants.routers.TenantSyncRouter",
-]
+DATABASE_ROUTERS = ["django_tenants.routers.TenantSyncRouter"]
 
 
 # * Password validation
@@ -162,10 +166,25 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-CORS_ORIGIN_ALLOW_ALL = True
+
+# * Auth settings
+
+AUTH_USER_MODEL = "users.User"
+
+AUTHENTICATION_BACKENDS = [
+    "tenant_users.permissions.backend.UserBackend",
+    "guardian.backends.ObjectPermissionBackend",
+]
 
 
 # * Tetants settings
 
 TENANT_MODEL = "customers.Client"
 TENANT_DOMAIN_MODEL = "customers.Domain"
+
+TENANT_USERS_DOMAIN = env("DOMAIN")
+
+
+# * Cors configuration
+
+CORS_ORIGIN_ALLOW_ALL = True
