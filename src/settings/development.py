@@ -4,7 +4,9 @@ SECRET_KEY = "y4efc%jc#vm#pr5$4pie2h-9mw)ua_1=rw$v6&o&9_kvhajw$h"
 
 DEBUG = True
 
-INSTALLED_APPS += "debug_toolbar"
+SHARED_APPS.append("debug_toolbar")
+INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
+
 
 MIDDLEWARE.insert(2, "debug_toolbar.middleware.DebugToolbarMiddleware")
 

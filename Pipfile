@@ -19,6 +19,9 @@ django-tenants = "*"
 psycopg2 = "*"
 django-tenant-users = "*"
 django-guardian = "*"
+django-graphql-auth = "*"
+django-graphql-social-auth = "*"
+django-graphql-extensions = "*"
 
 [requires]
 python_version = "3.8"
