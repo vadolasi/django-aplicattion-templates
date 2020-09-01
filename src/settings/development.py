@@ -13,7 +13,7 @@ MIDDLEWARE.insert(2, "debug_toolbar.middleware.DebugToolbarMiddleware")
 DATABASES = {
     "default": {
         "ENGINE": "django_tenants.postgresql_backend",
-        "NAME": "default",
+        "NAME": "postgres",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "localhost",
